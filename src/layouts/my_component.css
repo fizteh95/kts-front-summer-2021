@@ -1,0 +1,153 @@
+/* CSS styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.component {
+  width: 400px;
+}
+
+.search-box {
+  margin: 20px auto;
+  width: 357px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-column-gap: 12px;
+}
+
+.input-class {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px;
+}
+
+.input-class:focus {
+  border: 1px solid #FF5555;
+  outline: none;
+}
+
+.input-class:disabled {
+  background: #F9F9F9;
+  border: 1px solid #D9D9D9;
+  border-radius: 6px;
+  color: #7E7E7E;
+}
+
+.input-class::placeholder {
+  color: #7E7E7E;
+}
+
+.search-button {
+  width: 50px;
+  height: 50px;
+  background: #FF5555;
+  border: 0px;
+  border-radius: 6px;
+}
+
+.button-back {
+  background-image: url("search.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.search-button:hover {
+  opacity: 0.7;
+}
+
+.search-button:disabled {
+  background: #D9D9D9;
+}
+
+.main-list {
+  display: grid;
+  grid-row-gap: 16px;
+}
+
+.container {
+  margin: 0px auto;
+  border: #D9D9D9 solid 1px;
+  border-radius: 6px;
+  width: 357px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-family: 'Roboto';
+  box-sizing: border-box;
+}
+
+.container:hover {
+  background: #FFFFFF;
+  border: 1px solid #D9D9D9;
+  box-shadow: 0px 2px 6px rgba(182, 182, 182, 0.25);
+  border-radius: 6px;
+}
+
+.logo {
+  
+  background: #FF5555;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  margin-right: 20px;
+}
+
+.logo-text {
+  vertical-align: -113%;
+}
+
+.right-content {
+  height: 80px;
+  width: 241px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.author {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7E7E7E;
+}
+
+.author:hover {
+  color: #208FBF;
+}
+
+.additional-data {
+  display: flex;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: #7E7E7E;
+}
+
+.stars {
+  margin-right: 30px;
+}
+
+.gold-star {
+  color: #FF9432;
+}
