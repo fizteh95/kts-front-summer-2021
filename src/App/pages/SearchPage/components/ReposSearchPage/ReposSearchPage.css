@@ -1,0 +1,17 @@
+.component {
+  width: 400px;
+}
+
+.search-box {
+  margin: 20px auto;
+  width: 357px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  grid-column-gap: 12px;
+}
+
+.main-list {
+  display: grid;
+  grid-row-gap: 16px;
+}
