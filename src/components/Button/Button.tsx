@@ -15,4 +15,4 @@ const Button: React.FC<Props> = ({ children, onClick, disabled }) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);

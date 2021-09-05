@@ -40,8 +40,6 @@ export default class ApiStore implements IApiStore {
         });
     } catch (e) {
       return new Promise(() => {
-        //console.log("some error");
-        //console.log(e);
         return { success: false, data: null, status: StatusHTTP.NOT_OK };
       });
     }
