@@ -2,7 +2,7 @@ import * as React from "react";
 
 import Avatar from "@components/Avatar";
 import StarIcon from "@components/StarIcon";
-import "./RepoTile.css";
+import "./RepoTile.scss";
 
 import { RepoItem } from "../../store/GitHubStore/types";
 
@@ -25,7 +25,14 @@ const RepoTile: React.FC<Props> = ({ item, onClick }) => {
       <div className="right-content">
         <div className="title">{item.name}</div>
         <div className="author">
-          <a href={item.owner_url}>{item.owner_login}</a>
+          <a
+            href={item.owner_url}
+            onClick={(event) => {
+              event.stopPropagation();
+            }}
+          >
+            {item.owner_login}
+          </a>
         </div>
         <div className="additional-data">
           <div className="stars">

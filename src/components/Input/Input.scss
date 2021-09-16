@@ -1,0 +1,28 @@
+@import "../variables";
+
+.input-class {
+  border: 1px solid $color_of_border;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 12px;
+
+  &:focus {
+    border: 1px solid $pink_color;
+    outline: none;
+  }
+
+  &:disabled {
+    background: #F9F9F9;
+    border: 1px solid $color_of_border;
+    border-radius: 6px;
+    color: $grey_color;
+  }
+
+  &::placeholder {
+    color: $grey_color;
+  }
+}
+

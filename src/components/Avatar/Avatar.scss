@@ -1,0 +1,15 @@
+@import "../variables";
+
+.logo {
+  background: $pink_color;
+  @include box(80px, 80px, 40px);
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  margin-right: 20px;
+  background-size: contain;
+
+  &-text {
+    vertical-align: -34%;
+  }
+}

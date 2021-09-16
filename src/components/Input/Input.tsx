@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./Input.css";
+import "./Input.scss";
 
 //value, placeholder и onChange
 export type Props = {
