@@ -4,23 +4,18 @@ import Button from "@components/Button";
 import Input from "@components/Input";
 import RepoTile from "@components/RepoTile";
 import SearchIcon from "@components/SearchIcon";
+import { useHistory } from "react-router-dom";
+import "./ReposSearchPage.scss";
 
-import "./ReposSearchPage.css";
-//import { test_repos } from "../../../../../root/root";
 import GitHubStore from "../../../../../store/GitHubStore/GitHubStore";
 import { RepoItem } from "../../../../../store/GitHubStore/types";
-
-// const gitHubStore = new GitHubStore();
-
-// //const EXAMPLE_ORGANIZATION = "ktsstudio";
-
-// function test_repos(org: string) {
-//   return gitHubStore.getOrganizationReposList({
-//     organizationName: org,
-//   });
-// }
+import { useReposContext } from "../../../../App";
 
 const ReposSearchPage: React.FC = () => {
+  const ReposContext = useReposContext();
+
+  const history = useHistory();
+
   const gitHubStore = new GitHubStore();
 
   const [inputVal, setInputVal] = React.useState("");
@@ -28,37 +23,32 @@ const ReposSearchPage: React.FC = () => {
     setInputVal(e.target.value);
   };
 
-  const [isLoading, setIsLoading] = React.useState(true);
-  const handleLoading = () => {
-    setIsLoading(false);
-  };
-  const handleLoadingOn = () => {
-    setIsLoading(true);
-  };
-
-  const [loadedRepos, setLoadedRepos] = React.useState<RepoItem[]>([]);
-  const handleRepos = (list_of_repos: RepoItem[]) => {
-    setLoadedRepos(list_of_repos);
-  };
-
   const [repoAuthor, setRepoAuthor] = React.useState("octokit");
   const handleRepoAuthorNew = () => {
     if (inputVal !== repoAuthor) {
-      handleLoadingOn();
+      ReposContext.setContext({
+        list: ReposContext.context.list,
+        isLoading: true,
+        load: ReposContext.context.load,
+      });
       setRepoAuthor(inputVal);
     }
   };
-  // const handleRepoAuthorDone = () => {
-  //   setRepoAuthor("");
-  // };
+
+  const load_data = (response: any) => {
+    ReposContext.setContext({
+      list: response.data,
+      isLoading: false,
+      load: ReposContext.context.load,
+    });
+  };
 
   React.useEffect(() => {
     const fetchRepos = async () => {
       const response = await gitHubStore.getOrganizationReposList({
         organizationName: repoAuthor,
       });
-      handleRepos(response.data);
-      handleLoading();
+      load_data(response);
     };
 
     fetchRepos();
@@ -74,14 +64,20 @@ const ReposSearchPage: React.FC = () => {
         />
         <Button
           children={<SearchIcon />}
-          disabled={isLoading}
+          disabled={ReposContext.context.isLoading}
           onClick={handleRepoAuthorNew}
         />
       </div>
-      {!isLoading && (
+      {!ReposContext.context.isLoading && (
         <div className="main-list">
-          {loadedRepos.map((item: RepoItem) => (
-            <RepoTile key={item.id} item={item} onClick={() => {}} />
+          {ReposContext.context.list.map((item: RepoItem) => (
+            <RepoTile
+              key={item.id}
+              item={item}
+              onClick={() => {
+                history.push(`/repos/${item.id}`);
+              }}
+            />
           ))}
         </div>
       )}
