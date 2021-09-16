@@ -1,0 +1,15 @@
+.logo {
+  background: #FF5555;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  text-align: center;
+  color: white;
+  font-size: 40px;
+  margin-right: 20px;
+  background-size: contain;
+}
+
+.logo-text {
+  vertical-align: -34%;
+}
